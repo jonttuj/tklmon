@@ -19,6 +19,8 @@ $.urlParam = function(name){
 }
 
 var stop = $.urlParam('stop');
+var lines = $.urlParam('lines');
+var showage = $.urlParam('showage');
 var bg = $.urlParam('bg');
 var fg = $.urlParam('fg');
 if($.urlParam('interval') != ""){
@@ -41,7 +43,7 @@ setInterval(function() {
 }, 500);
 }
 
-var url = 'https://api.vlan.fi/bus/' + stop;
+var url = 'https://api.vlan.fi/bus/' + stop + '/' + lines;
 
 $(document).ready(function(){
       dataUpdate();
@@ -52,7 +54,10 @@ function dataUpdate(){
 $.getJSON(url, function(data) {
 
 document.getElementById("stop").innerHTML = data.name + ' (' + data.stop +')';
-document.getElementById("age").innerHTML = data.age + ' s';
+
+if(showage == "yes"){
+	document.getElementById("age").innerHTML = data.age + ' s';
+}
 
 var tr = "<th class=line>Linja</th><th class=arrow></th><th>Määränpää</th><th class=timeicon><img class=nexttimeicon src=clock.png></th><th class=timeicon><img class=timeicon src=clock.png></th><th class=timeicon><img class=timeicon src=clock.png></th>";
 
