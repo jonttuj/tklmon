@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=1.0)">
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=1.0)">
+<link rel="stylesheet" href="tkl.css">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+$.urlParam = function(name){
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	if(results){
+		return results[1] || 0;
+	}else{
+		return "";
+	}
+}
+
+var stop = $.urlParam('stop');
+var bg = $.urlParam('bg');
+var fg = $.urlParam('fg');
+if($.urlParam('interval') != ""){
+	var interval = 100 * $.urlParam('interval');
+}else{
+	var interval = 60000; // 60000 = 1min
+}
+
+
+var url = 'https://api.vlan.fi/bus/' + stop;
+
+$(document).ready(function(){
+      dataUpdate();
+});
+
+function dataUpdate(){
+
+$.getJSON(url, function(data) {
+
+document.getElementById("stop").innerHTML = data.name + ' (' + data.stop +')';
+document.getElementById("age").innerHTML = data.age + ' s';
+
+var tr = "<th class=line>Linja</th><th class=arrow></th><th>Määränpää</th><th class=clock><img class=nextclock src=clock.png></th><th class=clock><img class=clock src=clock.png></th><th class=clock><img class=clock src=clock.png></th>";
+
+$.each(data.lines, function(index, value) {
+	tr += "<tr><td>" + index + "</td><td>-></td><td>" + data.lines[index].destination + "</td>";
+
+	for (var i = 0; i < data.lines[index].departs.length; i++) {
+		if(i == 0){
+			tr += "<td class=next>" + data.lines[index].departs[i] + "</td>";
+		}else{
+			tr += "<td class=time>" + data.lines[index].departs[i] + "</td>";
+		}
+	}
+	tr += "</tr>";
+});
+
+document.getElementById("lines").innerHTML = tr;
+
+});
+
+setTimeout(dataUpdate, interval);
+}
+</script>
+</head>
+<body>
+<p id="stop"></p>
+<p id="age"></p>
+<table id="lines"></table>
+
+<script>
+if(bg != ""){
+	document.body.style.backgroundColor = bg;
+}
+if(fg != ""){
+   document.body.style.color = fg;
+}
+</script>
+</body>
+</html>
