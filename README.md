@@ -3,7 +3,7 @@
 Shows https://api.vlan.fi/bus/ data more beatifully.
 
 Usage
-tklmon/?stop=1234&param1=XYZ
+  tklmon/?stop=1234&param1=XYZ
 
 Possible parameters are at the moment:
   stop: stop number according to http://joukkoliikenne.tampere.fi/
