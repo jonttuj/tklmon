@@ -35,52 +35,63 @@ body{
 	font-family: "Source Sans Pro";
    font-size: 16px;
 }
-#lines{
+#lines, #header{
 	font-family: "Source Sans Pro";
 	font-size: 22px;
 	line-height: 36px;
 	text-align: left;
 }
-table#lines{
+table#lines, table#header{
 	width: 100%;
 	max-width: 940px;
 	padding: 0px;
 }
 
-table#line th{
-	text-weight: bold;
+table#header{
+	font-size: 26px;
+	font-height: 40px;
+	font-weight: bold;
 }
 
 th{ padding: 0px;}
 td{ padding: 0px;}
 tr{ padding: 0px;}
 
-th.line{
+.line{
 	width: 70px;
 }
-th.arrow{
+.arrow{
 	width: 40px;
 }
 
 td.next{
 	font-size: 28px;
+	width: 100px;
 	text-align: right;
 }
 
 td.time{
 	text-align: right;
+	width: 100px;
 }
 
 th.timeicon{
 	width: 100px;
-	text-align: right;
 }
 
-img.nexttimeicon{
-   margin-top: 8px;
+div#nexticon{
+	float: right;
+	background-color: white;
+	height: 32px;
+	width: 32px;
    margin-right: 15px;
+	-webkit-mask-box-image: url(clock.png);
 }
-img.timeicon{
-	margin-top: 8px;
+div#secondicon, div#thirdicon{
+	float: right;
+	background-color: white;
+	height: 32px;
+   width: 32px;
 	margin-right: 8px;
+	-webkit-mask-box-image: url(clock.png);
 }

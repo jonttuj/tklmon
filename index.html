@@ -59,10 +59,10 @@ if(showage == "yes"){
 	document.getElementById("age").innerHTML = data.age + ' s';
 }
 
-var tr = "<th class=line>Linja</th><th class=arrow></th><th>Määränpää</th><th class=timeicon><img class=nexttimeicon src=clock.png></th><th class=timeicon><img class=timeicon src=clock.png></th><th class=timeicon><img class=timeicon src=clock.png></th>";
+var tr = "";
 
 $.each(data.lines, function(index, value) {
-	tr += "<tr><td>" + index + "</td><td>-></td><td>" + data.lines[index].destination + "</td>";
+	tr += "<tr><td class=line>" + index + "</td><td class=arrow>-></td><td>" + data.lines[index].destination + "</td>";
 
 	for (var i = 0; i < data.lines[index].departs.length; i++) {
 		if(i == 0){
@@ -86,6 +86,7 @@ setTimeout(dataUpdate, interval);
 <p id="stop"></p>
 <p id="clock"></p>
 <p id="age"></p>
+<table id="header"><th class=line>Linja</th><th class=arrow></th><th>Määränpää</th><th class=timeicon><div id=nexticon></div></th><th class=timeicon><div id=secondicon></div></th><th class=timeicon><div id=thirdicon></div></th></table>
 <table id="lines"></table>
 
 <script>
@@ -94,6 +95,9 @@ if(bg != ""){
 }
 if(fg != ""){
    document.body.style.color = fg;
+	document.getElementById("nexticon").style.backgroundColor = fg;
+	document.getElementById("secondicon").style.backgroundColor = fg;
+	document.getElementById("thirdicon").style.backgroundColor = fg;
 }
 </script>
 </body>
