@@ -26,7 +26,20 @@ if($.urlParam('interval') != ""){
 }else{
 	var interval = 60000; // 60000 = 1min
 }
+var clock = $.urlParam('clock');
 
+if(clock != "no"){
+setInterval(function() {
+	var date = new Date();
+	var hr = date.getHours();
+	var min = date.getMinutes();
+	var sec = date.getSeconds();
+
+	$('#clock').html(
+        ( hr < 10 ? "0" : "" ) + hr + ":" + ( min < 10 ? "0" : "" ) + min + ":" + ( sec < 10 ? "0" : "" ) + sec
+        );
+}, 500);
+}
 
 var url = 'https://api.vlan.fi/bus/' + stop;
 
@@ -41,7 +54,7 @@ $.getJSON(url, function(data) {
 document.getElementById("stop").innerHTML = data.name + ' (' + data.stop +')';
 document.getElementById("age").innerHTML = data.age + ' s';
 
-var tr = "<th class=line>Linja</th><th class=arrow></th><th>Määränpää</th><th class=clock><img class=nextclock src=clock.png></th><th class=clock><img class=clock src=clock.png></th><th class=clock><img class=clock src=clock.png></th>";
+var tr = "<th class=line>Linja</th><th class=arrow></th><th>Määränpää</th><th class=timeicon><img class=nexttimeicon src=clock.png></th><th class=timeicon><img class=timeicon src=clock.png></th><th class=timeicon><img class=timeicon src=clock.png></th>";
 
 $.each(data.lines, function(index, value) {
 	tr += "<tr><td>" + index + "</td><td>-></td><td>" + data.lines[index].destination + "</td>";
@@ -66,6 +79,7 @@ setTimeout(dataUpdate, interval);
 </head>
 <body>
 <p id="stop"></p>
+<p id="clock"></p>
 <p id="age"></p>
 <table id="lines"></table>
 

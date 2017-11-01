@@ -15,10 +15,21 @@ body{
 	font-weight: bold;
 	line-height: 36px;
 }
+#clock{
+	width: 140px;
+	position: absolute;
+   top: 18px;
+   right: 22px;
+	text-align: right;
+   margin: 0px;
+	padding-right: 4px;
+   font-family: "Source Sans Pro";
+   font-size: 36px;
+}
 #age{
 	width: 40px;
 	position: absolute;
-	top: 28px;
+	bottom: 28px;
 	right: 24px;
 	margin: 0px;
 	font-family: "Source Sans Pro";
@@ -60,16 +71,16 @@ td.time{
 	text-align: right;
 }
 
-th.clock{
+th.timeicon{
 	width: 100px;
 	text-align: right;
 }
 
-img.nextclock{
+img.nexttimeicon{
    margin-top: 8px;
    margin-right: 15px;
 }
-img.clock{
+img.timeicon{
 	margin-top: 8px;
 	margin-right: 8px;
 }

@@ -12,3 +12,4 @@ Possible parameters are at the moment:
 	bg: background color (eg. blue, #123123)
 	fg: foreground color = text color
 	interval: how often data is retrieved (given in seconds, default is 1min)
+	clock=no: hide clock
