@@ -10,7 +10,7 @@ Possible parameters are at the moment:
 
 	stop: stop number according to http://joukkoliikenne.tampere.fi/
 	lines: dot separated list of line numbers to show
-	bg: background color (eg. blue, #123123)
+	bg: background color (eg. blue, rgb(1,2,3))
 	fg: foreground color = text color
 	interval: how often data is retrieved (given in seconds, default is 1min)
 	clock=no: hide clock
