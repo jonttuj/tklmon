@@ -51,6 +51,7 @@ table#header{
 	font-size: 26px;
 	font-height: 40px;
 	font-weight: bold;
+	height: 40px;
 }
 
 th{ padding: 0px;}
@@ -58,15 +59,22 @@ td{ padding: 0px;}
 tr{ padding: 0px;}
 
 .line{
-	width: 70px;
+	width: 100px;
+}
+td.line{
+	font-size: 32px;
+	font-height: 40px;
+	font-weight: bold;
 }
 .arrow{
 	width: 40px;
 }
 
 td.next{
-	font-size: 28px;
+	font-size: 32px;
+	font-height: 40px;
 	width: 100px;
+	height: 40px;
 	text-align: right;
 }
 
@@ -84,7 +92,7 @@ div#nexticon{
 	background-color: white;
 	height: 32px;
 	width: 32px;
-   margin-right: 15px;
+   margin-right: 20px;
 	-webkit-mask-box-image: url(clock.png);
 }
 div#secondicon, div#thirdicon{
